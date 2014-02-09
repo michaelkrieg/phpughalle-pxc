@@ -12,5 +12,5 @@ class pxc_base {
 
 }
 
-class pxc_box inherits pxc_base {
+class percona-cluster inherits pxc_base {
 }
