@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 ##### the cluster nodes:
 #####
   INSTANCES.times do |i|
-    config.vm.define "pcx#{i}".to_sym do |vmconfig|
+    config.vm.define "pxc#{i + 1}".to_sym do |vmconfig|
       vmconfig.vm.box     = "redtag-debian-71-x64-vbox4210"
       vmconfig.vm.box_url = "http://files.red-tag.de/vagrant/debian-71-x64-vbox4210.box"
 
