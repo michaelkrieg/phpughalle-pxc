@@ -10,6 +10,19 @@ class pxc_base {
   class { 'apt':    }
   class { 'ntp':    }
 
+  host { 'pxc1.pxc.cluster.local':
+    ip => '172.23.77.11',
+    host_aliases => 'pxc1',
+  }
+  host { 'pxc2.pxc.cluster.local':
+    ip => '172.23.77.12',
+    host_aliases => 'pxc2',
+  }
+  host { 'pxc3.pxc.cluster.local':
+    ip => '172.23.77.13',
+    host_aliases => 'pxc3',
+  }
+  
 }
 
 class percona-cluster inherits pxc_base {
