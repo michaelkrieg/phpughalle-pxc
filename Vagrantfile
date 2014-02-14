@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vmconfig.vm.box_url = "http://files.red-tag.de/vagrant/debian-71-x64-vbox4210.box"
 
       vmconfig.vm.network :private_network, ip: "#{SUBNET}.%d" % (10 + i + 1)
-      vmconfig.vm.host_name = "pxc#{i}.#{DOMAIN}"
+      vmconfig.vm.host_name = "pxc#{i + 1}.#{DOMAIN}"
 
       vmconfig.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
