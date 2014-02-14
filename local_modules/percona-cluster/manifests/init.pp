@@ -23,7 +23,10 @@ class percona-cluster inherits pxc_base {
     include_src       => true
   } ->
   package {'percona-xtradb-cluster-56':
-    ensure   => latest,
+    ensure  => latest,
+  } ->
+  service { 'mysql':
+    ensure  => 'stopped',
+    require => Package['percona-xtradb-cluster-56'],
   }
-
 }
