@@ -28,5 +28,9 @@ class percona-cluster inherits pxc_base {
   service { 'mysql':
     ensure  => 'stopped',
     require => Package['percona-xtradb-cluster-56'],
+  } ->
+  file { "/etc/mysql/conf.d/${hostname}-cluster.cnf":
+    ensure => 'present',
+    source => "puppet:///modules/percona-cluster/${hostname}-my-cluster.cnf",
   }
 }
