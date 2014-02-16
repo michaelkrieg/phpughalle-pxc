@@ -6,9 +6,9 @@ class pxc_base {
     path => ['/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/', '/home/vagrant/bin']
   }
 
-  class { 'stdlib': }
-  class { 'apt':    }
-  class { 'ntp':    }
+  class { 'stdlib':                   }
+  class { 'apt::backports':           }
+  class { 'ntp':                      }
 
   host { 'pxc1.pxc.cluster.local':
     ip => '172.23.77.11',
@@ -45,5 +45,7 @@ class percona-cluster inherits pxc_base {
   file { "/etc/mysql/conf.d/${hostname}-cluster.cnf":
     ensure => 'present',
     source => "puppet:///modules/percona-cluster/${hostname}-my-cluster.cnf",
-  }
+  } ->
+  class { 'percona-cluster::haproxy': }
+  
 }
