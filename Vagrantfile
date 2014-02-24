@@ -7,7 +7,7 @@ INSTANCES=3
 
 DOMAIN="pxc.cluster.local"
 
-MEMORY=256
+MEMORY=384
 
 SUBNET="172.23.77"
 
