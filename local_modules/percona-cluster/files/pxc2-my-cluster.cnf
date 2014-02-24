@@ -1,20 +1,30 @@
 [mysqld]
-server_id=2
+server_id=1
 binlog_format=ROW
 log_bin=mysql-bin
-wsrep_cluster_address=gcomm://
-wsrep_cluster_address=gcomm://172.23.77.11
+wsrep_cluster_address='gcomm://pxc1,pxc3'
+wsrep_node_incoming_address='172.23.77.12'
+wsrep_sst_receive_address='172.23.77.12'
 
 wsrep_provider=/usr/lib/libgalera_smm.so
 datadir=/var/lib/mysql
 
 wsrep_slave_threads=2
 wsrep_cluster_name=pxctest
-wsrep_sst_method=xtrabackup
-wsrep_node_name=pxc2
+wsrep_notify_cmd=
+wsrep_sst_method=xtrabackup-v2
+wsrep_sst_auth="root:ficken100"
+
+wsrep_node_name="pxc2"
+wsrep_node_address="pxc2"
 
 log_slave_updates
 
 innodb_autoinc_lock_mode=2
-innodb_buffer_pool_size=400M
+innodb_buffer_pool_size=128M
 innodb_log_file_size=64M
+
+[sst]
+streamfmt=xbstream
+
+
