@@ -42,9 +42,18 @@ class percona-cluster inherits pxc_base {
     ensure  => 'stopped',
     require => Package['percona-xtradb-cluster-56'],
   } ->
+  file { "/etc/mysql/my.cnf":
+    ensure => 'present',
+    source => "puppet:///modules/percona-cluster/my.cnf",
+  } ->
   file { "/etc/mysql/conf.d/${hostname}-cluster.cnf":
     ensure => 'present',
     source => "puppet:///modules/percona-cluster/${hostname}-my-cluster.cnf",
+  } ->
+  file { "/root/bootstrap-pxc.sh":
+    ensure => 'present',
+    mode   => '0750',
+    source => "puppet:///modules/percona-cluster/bootstrap-pxc.sh",
   } ->
   class { 'percona-cluster::haproxy': }
   
