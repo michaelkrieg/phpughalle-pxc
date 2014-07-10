@@ -35,3 +35,7 @@ Wer automatisch die VB Guest Additions aktuell halten möchte, braucht lediglich
 
     vagrant plugin install vagrant-vbguest
 
+
+
+----------
+
