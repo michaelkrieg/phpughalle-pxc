@@ -26,6 +26,7 @@ innodb_flush_log_at_trx_commit=2
 innodb_file_per_table=1
 innodb_read_io_threads=4
 innodb_write_io_threads=4
+innodb_flush_method=O_DIRECT
 
 [sst]
 streamfmt=xbstream
