@@ -46,6 +46,7 @@ end
       vmconfig.vm.provision :puppet do |puppet|
         puppet.manifests_path = "manifests"
         puppet.manifest_file  = "site.pp"
+        puppet.hiera_config_path = "hiera.yaml"
         puppet.options = [
           "--verbose",
           "--modulepath=/vagrant/modules:/vagrant/local_modules"
