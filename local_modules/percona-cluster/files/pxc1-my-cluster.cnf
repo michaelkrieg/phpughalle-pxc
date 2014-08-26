@@ -1,5 +1,4 @@
 [mysqld]
-server_id=1
 binlog_format=ROW
 log_bin=mysql-bin
 wsrep_cluster_address='gcomm://'
