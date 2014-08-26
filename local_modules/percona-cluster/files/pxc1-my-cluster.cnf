@@ -22,6 +22,10 @@ log_slave_updates
 innodb_autoinc_lock_mode=2
 innodb_buffer_pool_size=128M
 innodb_log_file_size=64M
+innodb_flush_log_at_trx_commit=2
+innodb_file_per_table=1
+innodb_read_io_threads=4
+innodb_write_io_threads=4
 
 [sst]
 streamfmt=xbstream
