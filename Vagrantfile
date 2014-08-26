@@ -13,6 +13,16 @@ SUBNET="172.23.77"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+if Vagrant.has_plugin?('vagrant-vbguest')
+  class GuestAdditionsFixer < VagrantVbguest::Installers::Debian
+    def install(opts=nil, &block)
+      super
+      communicate.sudo('([ -e /opt/VBoxGuestAdditions-4.3.10 ] && sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions) || true')
+    end
+  end
+end
+
+
 #####
 ##### the cluster nodes:
 #####
